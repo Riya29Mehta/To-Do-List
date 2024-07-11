@@ -1,0 +1,45 @@
+
+<div class = 'container'>
+    <h1>Your tasks</h1>
+    <div class="logout-container">
+        <button class="logout-button" (click)="logout()">Logout</button>
+    </div>
+    <div style="display: flex; align-items: center;">
+    <button class='addTask' (click)="toggleInputBox()">Add Task(+)</button>
+    <div *ngIf="showInputBox">
+        <input type="text" [(ngModel)]="newTaskTitle" placeholder="Enter task title">
+        <button class='addTask' (click)="addTask()">Save</button>
+    </div>
+</div>
+   
+    <table>
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>Status</th>
+                <th>Change Status</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let t of task; let i = index">
+                <td>{{t.task_title}}</td>
+                <td>{{t.isCompleted ? 'Completed' : 'Incomplete'}}</td>
+                <td>
+                    <button class="status" type="button" (click)="changeStatus(t.task_title)" style="width: 100px;">Mark as complete</button>
+                </td>
+                <td>
+                    <button class="edit" type="button" (click)="toggleEditbox(i)">Edit</button>
+                </td>
+                <td>
+                    <button class="delete" type="button" (click)="deleteTask(t.task_title)">Delete</button>
+                </td>
+                <td *ngIf="editingTaskIndex === i">                    
+                        <input type="text" [(ngModel)]="editedTaskTitle" placeholder="Edit task">
+                        <button class="edit" style="border: 10px;" (click)="editTask(t.task_title)">Save</button>                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

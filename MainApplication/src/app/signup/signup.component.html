@@ -1,0 +1,41 @@
+<div class="container">
+                <div>
+                    <h2>Welcome</h2>
+                </div>
+                <p style="color: lightslategray; text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please enter your Registration
+                    details&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <input type="text" id="username" placeholder="username" class="form-control" formControlName="email"
+                            name="username" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="password" placeholder="Password" class="form-control"
+                            formControlName="password" name="password" />
+                            <small *ngIf="signupForm.get('password')?.hasError('required') && signupForm.get('password')?.touched" style="color: red;">
+                                password is required
+                            </small>
+                            <small *ngIf="signupForm.get('password')?.hasError('minlength') && signupForm.get('password')?.touched" style="color: red;">
+                                password must contain at least 8 characters !<br>
+                            </small>
+                            <small *ngIf="signupForm.get('password')?.hasError('maxlength') && signupForm.get('password')?.touched" style="color: red;">
+                                password must be less than 20 characters !<br>
+                            </small>
+                            <small *ngIf="signupForm.get('password')?.hasError('pattern') && signupForm.get('password')?.touched" style="color: red;">
+                                password should contain atleast 1 number    <br>
+                                password should contain atleast 1 uppercase alphabet<br>
+                                password should contain atleast 1 lowercase alphabet<br>
+                                password should contain atleast 1 special character
+                            </small>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="confirmpassword" placeholder="Confirm Password" class="form-control"
+                            formControlName="confirmPassword" name="confirmPassword" />
+                    </div>
+                    <input type="submit" class="btn btn-primary w-100" value="Register" name="" [disabled]="signupForm.invalid">
+                </form>
+            <div>
+                <small><a routerLink="/login">Do you have an account? Login</a></small>
+            </div>
+        </div>

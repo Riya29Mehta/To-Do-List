@@ -1,0 +1,31 @@
+<div class="body">
+<div class = 'container'>                
+                <div>
+                    <h2>Welcome <br> To-Do list</h2>
+                </div>
+                <p style="color: lightslategray; text-align: center;">
+                    Please enter your login
+                    details<br>
+                    <small style="color: red; text-align: center; font-family:'Times New Roman', Times, serif" *ngIf="loginFailed">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Invalid credentials!!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small></p>
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Username" class="form-control" formControlName="email"
+                            name="email" />
+                        <small *ngIf="loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched" style="color: red;">
+                            username is required
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="password" placeholder="Password" class="form-control"
+                            formControlName="password" name="password" />
+                
+                    </div>
+                    <input type="submit" class="btn btn-primary w-100" value="Login" name="" [disabled]="loginForm.invalid">
+                </form>
+            <div>
+                <small><a routerLink="/signup">Do not have an account? SignUp</a></small>
+            </div>
+
+        </div>
+
+    </div>
