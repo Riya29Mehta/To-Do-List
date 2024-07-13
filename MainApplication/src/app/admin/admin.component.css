@@ -1,6 +1,4 @@
-/* app.component.css */
-
-.container {
+/* .container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
@@ -20,7 +18,6 @@
 
 }
 
-/* Corrected CSS class name */
 .delete {
     background-color: rgb(167, 11, 11);
     color: white;
@@ -103,28 +100,73 @@ th, td {
     padding: 20px;
 }
 
-/* Style for the logout button container */
+
 .logout-container {
     text-align: right;
     margin-top: 20px;
 }
 
-/* Style for the logout button */
+
 .logout-button {
     padding: 10px 15px;
     font-size: 16px;
-    background-color: #dc3545; /* Red color, you can change it as needed */
+    background-color: #dc3545; 
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
-/* Hover effect for the logout button */
+
 .logout-button:hover {
-    background-color: #c82333; /* Darker red on hover */
+    background-color: #c82333; 
 }
 
   
-  /* Add more styles as needed */
+   */
+
+
+   .container {
+    display: flex;
+    margin: auto;
+    padding: 20px;
+    
+  }
+  
+  .logout-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .logout-button {
+    margin-bottom: 20px;
+  }
+  
+  .task-card {
+    width: 330px; /* Adjust the width to fit three cards per row with a 20px gap */
+    min-width: 250px; /* Ensure a minimum width */
+    margin: 10px 0;
+    max-width: 300px;
+    background-color:rgb(219, 216, 240);
+    border: 1px solid gray;
+  }
+  
+  .edit-box {
+    margin-top: 10px;
+  }
+
+  .card-title{
+    margin-left: 10px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+  }
+
+  .completed{
+    color: green;
+  }
+  .incompleted{
+    color:dimgray
+  }
+
+ 
   

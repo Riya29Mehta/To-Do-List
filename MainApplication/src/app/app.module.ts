@@ -16,6 +16,12 @@ import { CookieService } from 'ngx-cookie-service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { AddTaskComponent } from './add-task/add-task.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -35,12 +41,19 @@ import { AddTaskComponent } from './add-task/add-task.component';
     HttpClientModule,
     FormsModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatToolbarModule, 
+    FlexLayoutModule
   ],
   providers: [
    { provide: HTTP_INTERCEPTORS,
     useClass: ExpiredSessionInterceptor,
     multi: true},
+   provideAnimationsAsync(),
     ] ,
   bootstrap: [AppComponent]
 })

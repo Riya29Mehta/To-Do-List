@@ -1,4 +1,4 @@
-
+<!-- 
 <div class = 'container'>
     <h1>Your tasks</h1>
     <div class="logout-container">
@@ -42,4 +42,45 @@
             </tr>
         </tbody>
     </table>
+</div> -->
+
+
+<div class="container" fxLayout="column" fxLayoutAlign="center center">
+    <h1>Your tasks</h1>
+    <h2>Welcome! {{username}}</h2>
+    <div class="logout-container">
+      <button mat-raised-button color="warn" class="logout-button" (click)="logout()">Logout</button>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center" style="margin: 20px 0;">
+      <button mat-raised-button color="primary" class="addTask" (click)="toggleInputBox()">Add Task(+)</button>
+      <div *ngIf="showInputBox" style="margin-left: 20px;">
+        <mat-form-field>
+          <mat-label>Task Title</mat-label>
+          <input matInput [(ngModel)]="newTaskTitle" placeholder="Enter task title">
+        </mat-form-field>
+        <button mat-raised-button color="primary" class="addTask" (click)="addTask()">Save</button>
+      </div>
+    </div>
+  
+    <div fxLayout="row" fxLayout="row wrap" fxLayoutGap="20px" class="size">
+      <mat-card *ngFor="let t of task; let i = index" class="task-card">
+        <mat-card-title class="card-title">{{t.task_title}}</mat-card-title>
+        <mat-card-content>
+          <p [ngClass]="{'completed': t.isCompleted==true,'incompleted': t.isCompleted==false}" >Status: {{t.isCompleted ? 'Completed' : 'Incomplete'}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button color="primary" (click)="changeStatus(t.task_title)">Mark as complete</button>
+          <button mat-button color="accent" (click)="toggleEditbox(i)">Edit</button>
+          <button mat-button color="warn" (click)="deleteTask(t.task_title)">Delete</button>
+        </mat-card-actions>
+        <div *ngIf="editingTaskIndex === i" class="edit-box">
+          <mat-form-field>
+            <mat-label>Edit Task</mat-label>
+            <input matInput [(ngModel)]="editedTaskTitle" placeholder="Edit task">
+          </mat-form-field>
+          <button mat-raised-button color="accent" (click)="editTask(t.task_title)">Save</button>
+        </div>
+      </mat-card>
+    </div>
 </div>
+  

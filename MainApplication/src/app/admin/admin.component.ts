@@ -126,6 +126,7 @@ export class AdminComponent implements OnInit {
 
   // for logging out the user
   logout(): void {
+    alert("Are you sure want to logout?s")
     this.authService.logout().subscribe({
       next:(response) => {
         console.log("logged out")
